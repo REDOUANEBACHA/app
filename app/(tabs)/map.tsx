@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 import { getCourses } from "../../src/services/api";
 import { Course } from "../../src/types";
 
-MapboxGL.setAccessToken("MAPBOX_TOKEN_REMOVED");
+MapboxGL.setAccessToken(process.env.EXPO_PUBLIC_MAPBOX_TOKEN || "");
 
 export default function MapScreen() {
   const [courses, setCourses] = useState<Course[]>([]);
