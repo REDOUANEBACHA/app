@@ -1,7 +1,6 @@
 import { Course, HoleScore, Round, User, UserStats } from "../types";
 
-// Use your local IP so the phone can reach the server
-const API_URL = "http://192.168.1.58:3000/api";
+const API_URL = "https://server-psi-sable-92.vercel.app/api";
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_URL}${path}`, {
