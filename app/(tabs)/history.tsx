@@ -27,7 +27,7 @@ export default function HistoryScreen() {
   if (rounds.length === 0 && !loading) {
     return (
       <View style={styles.empty}>
-        <Ionicons name="time-outline" size={64} color="#ccc" />
+        <Ionicons name="time-outline" size={64} color="#444" />
         <Text style={styles.emptyText}>Aucune partie enregistrée</Text>
         <Text style={styles.emptySubtext}>Jouez une partie pour voir votre historique</Text>
       </View>
@@ -56,8 +56,8 @@ export default function HistoryScreen() {
             </View>
             <View style={styles.scoreColumn}>
               <Text style={styles.score}>{item.totalScore}</Text>
-              <View style={[styles.parBadge, { backgroundColor: diff <= 0 ? "#E8F5E9" : "#FFEBEE" }]}>
-                <Text style={[styles.parText, { color: diff <= 0 ? "#2E7D32" : "#C62828" }]}>
+              <View style={[styles.parBadge, { backgroundColor: diff <= 0 ? "#82FFB420" : "#FFEBEE" }]}>
+                <Text style={[styles.parText, { color: diff <= 0 ? "#82FFB4" : "#C62828" }]}>
                   {scoreToPar(item.totalScore, item.totalPar)}
                 </Text>
               </View>
@@ -88,13 +88,13 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   dateColumn: { width: 50, alignItems: "center", justifyContent: "center", marginRight: 12 },
-  dateDay: { fontSize: 24, fontWeight: "bold", color: "#1B5E20" },
+  dateDay: { fontSize: 24, fontWeight: "bold", color: "#1E232D" },
   dateMonth: { fontSize: 12, color: "#999", textTransform: "uppercase" },
   infoColumn: { flex: 1, justifyContent: "center" },
-  courseName: { fontSize: 16, fontWeight: "bold", color: "#333" },
+  courseName: { fontSize: 16, fontWeight: "bold", color: "#1E232D" },
   courseCity: { fontSize: 13, color: "#999", marginTop: 2 },
   scoreColumn: { alignItems: "center", justifyContent: "center" },
-  score: { fontSize: 28, fontWeight: "bold", color: "#333" },
+  score: { fontSize: 28, fontWeight: "bold", color: "#1E232D" },
   parBadge: { borderRadius: 6, paddingHorizontal: 8, paddingVertical: 2, marginTop: 4 },
   parText: { fontSize: 14, fontWeight: "bold" },
 });

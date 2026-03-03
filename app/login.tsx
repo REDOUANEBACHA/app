@@ -39,7 +39,7 @@ export default function LoginScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.header}>
-        <Ionicons name="golf" size={80} color="#fff" />
+        <Ionicons name="golf" size={80} color="#82FFB4" />
         <Text style={styles.title}>GolfTracker</Text>
         <Text style={styles.subtitle}>Suivez votre progression</Text>
       </View>
@@ -48,7 +48,7 @@ export default function LoginScreen() {
         <TextInput
           style={styles.input}
           placeholder="Votre nom"
-          placeholderTextColor="#999"
+          placeholderTextColor="#666"
           value={name}
           onChangeText={setName}
           autoCapitalize="words"
@@ -56,7 +56,7 @@ export default function LoginScreen() {
         <TextInput
           style={styles.input}
           placeholder="Votre email"
-          placeholderTextColor="#999"
+          placeholderTextColor="#666"
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
@@ -77,10 +77,10 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#1B5E20" },
+  container: { flex: 1, backgroundColor: "#1E232D" },
   header: { flex: 1, justifyContent: "center", alignItems: "center", paddingTop: 60 },
   title: { fontSize: 36, fontWeight: "bold", color: "#fff", marginTop: 16 },
-  subtitle: { fontSize: 16, color: "#A5D6A7", marginTop: 8 },
+  subtitle: { fontSize: 16, color: "#82FFB4", marginTop: 8 },
   form: {
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
@@ -94,15 +94,15 @@ const styles = StyleSheet.create({
     padding: 16,
     fontSize: 16,
     marginBottom: 16,
-    color: "#333",
+    color: "#1E232D",
   },
   button: {
-    backgroundColor: "#1B5E20",
+    backgroundColor: "#1E232D",
     borderRadius: 12,
     padding: 16,
     alignItems: "center",
     marginTop: 8,
   },
   buttonDisabled: { opacity: 0.6 },
-  buttonText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+  buttonText: { color: "#82FFB4", fontSize: 18, fontWeight: "bold" },
 });

@@ -2,7 +2,8 @@ import React from "react";
 import { Tabs } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 
-const THEME_GREEN = "#1B5E20";
+const DARK = "#1E232D";
+const ACCENT = "#82FFB4";
 
 export default function TabLayout() {
   return (
@@ -17,9 +18,10 @@ export default function TabLayout() {
           else if (route.name === "profile") iconName = focused ? "person" : "person-outline";
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: THEME_GREEN,
-        tabBarInactiveTintColor: "#999",
-        headerStyle: { backgroundColor: THEME_GREEN },
+        tabBarActiveTintColor: ACCENT,
+        tabBarInactiveTintColor: "#666",
+        tabBarStyle: { backgroundColor: DARK, borderTopColor: "#2A3040" },
+        headerStyle: { backgroundColor: DARK },
         headerTintColor: "#fff",
         headerTitleStyle: { fontWeight: "bold" },
       })}

@@ -50,7 +50,8 @@
           "locationWhenInUsePermission": "GolfTracker utilise votre position pour trouver les parcours proches."
         }
       ],
-      "expo-router"
+      "expo-router",
+      "expo-notifications"
     ],
     "extra": {
       "router": {},

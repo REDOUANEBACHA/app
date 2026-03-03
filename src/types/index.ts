@@ -3,6 +3,7 @@ export interface User {
   name: string;
   email: string;
   handicap: number;
+  pushToken?: string;
   createdAt: string;
 }
 

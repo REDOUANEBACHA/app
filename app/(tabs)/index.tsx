@@ -55,7 +55,7 @@ export default function HomeScreen() {
         <Text style={styles.sectionTitle}>Dernières parties</Text>
         {rounds.length === 0 ? (
           <View style={styles.emptyState}>
-            <Ionicons name="golf-outline" size={48} color="#ccc" />
+            <Ionicons name="golf-outline" size={48} color="#444" />
             <Text style={styles.emptyText}>Aucune partie enregistrée</Text>
             <TouchableOpacity
               style={styles.playButton}
@@ -76,7 +76,7 @@ export default function HomeScreen() {
                 <Text
                   style={[
                     styles.roundPar,
-                    { color: round.totalScore <= round.totalPar ? "#2ECC71" : "#E74C3C" },
+                    { color: round.totalScore <= round.totalPar ? "#82FFB4" : "#E74C3C" },
                   ]}
                 >
                   {scoreToPar(round.totalScore, round.totalPar)}
@@ -93,7 +93,7 @@ export default function HomeScreen() {
 function StatCard({ icon, label, value }: { icon: any; label: string; value: string }) {
   return (
     <View style={styles.statCard}>
-      <Ionicons name={icon} size={24} color="#1B5E20" />
+      <Ionicons name={icon} size={24} color="#82FFB4" />
       <Text style={styles.statValue}>{value}</Text>
       <Text style={styles.statLabel}>{label}</Text>
     </View>
@@ -103,7 +103,7 @@ function StatCard({ icon, label, value }: { icon: any; label: string; value: str
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F5F5F5" },
   welcomeCard: {
-    backgroundColor: "#1B5E20",
+    backgroundColor: "#1E232D",
     margin: 16,
     borderRadius: 16,
     padding: 20,
@@ -113,12 +113,12 @@ const styles = StyleSheet.create({
   },
   welcomeText: { fontSize: 22, fontWeight: "bold", color: "#fff" },
   handicapBadge: { alignItems: "center" },
-  handicapLabel: { fontSize: 12, color: "#A5D6A7" },
-  handicapValue: { fontSize: 28, fontWeight: "bold", color: "#fff" },
+  handicapLabel: { fontSize: 12, color: "#82FFB4" },
+  handicapValue: { fontSize: 28, fontWeight: "bold", color: "#82FFB4" },
   statsRow: { flexDirection: "row", marginHorizontal: 16, gap: 12 },
   statCard: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#1E232D",
     borderRadius: 12,
     padding: 16,
     alignItems: "center",
@@ -128,20 +128,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
-  statValue: { fontSize: 24, fontWeight: "bold", color: "#333", marginTop: 4 },
-  statLabel: { fontSize: 12, color: "#999", marginTop: 2 },
+  statValue: { fontSize: 24, fontWeight: "bold", color: "#fff", marginTop: 4 },
+  statLabel: { fontSize: 12, color: "#aaa", marginTop: 2 },
   section: { margin: 16 },
-  sectionTitle: { fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 12 },
+  sectionTitle: { fontSize: 18, fontWeight: "bold", color: "#1E232D", marginBottom: 12 },
   emptyState: { alignItems: "center", paddingVertical: 40 },
   emptyText: { fontSize: 16, color: "#999", marginTop: 12 },
   playButton: {
-    backgroundColor: "#1B5E20",
+    backgroundColor: "#1E232D",
     borderRadius: 12,
     paddingHorizontal: 24,
     paddingVertical: 12,
     marginTop: 16,
   },
-  playButtonText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
+  playButtonText: { color: "#82FFB4", fontSize: 16, fontWeight: "bold" },
   roundItem: {
     backgroundColor: "#fff",
     borderRadius: 12,
@@ -157,9 +157,9 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   roundLeft: { flex: 1 },
-  roundCourse: { fontSize: 16, fontWeight: "600", color: "#333" },
+  roundCourse: { fontSize: 16, fontWeight: "600", color: "#1E232D" },
   roundDate: { fontSize: 13, color: "#999", marginTop: 2 },
   roundRight: { alignItems: "flex-end" },
-  roundScore: { fontSize: 24, fontWeight: "bold", color: "#333" },
+  roundScore: { fontSize: 24, fontWeight: "bold", color: "#1E232D" },
   roundPar: { fontSize: 14, fontWeight: "600" },
 });

@@ -127,7 +127,7 @@ export default function PlayScreen() {
   if (loading) {
     return (
       <View style={styles.loader}>
-        <ActivityIndicator size="large" color="#1B5E20" />
+        <ActivityIndicator size="large" color="#82FFB4" />
       </View>
     );
   }
@@ -189,7 +189,7 @@ export default function PlayScreen() {
               style={styles.counterBtn}
               onPress={() => hole.score > 1 && updateScore("score", hole.score - 1)}
             >
-              <Ionicons name="remove" size={24} color="#fff" />
+              <Ionicons name="remove" size={24} color="#1E232D" />
             </TouchableOpacity>
             <View style={[styles.scoreDisplay, { backgroundColor: getScoreColor(hole.score, hole.par) + "20" }]}>
               <Text style={[styles.scoreValue, { color: getScoreColor(hole.score, hole.par) }]}>
@@ -203,7 +203,7 @@ export default function PlayScreen() {
               style={styles.counterBtn}
               onPress={() => updateScore("score", hole.score + 1)}
             >
-              <Ionicons name="add" size={24} color="#fff" />
+              <Ionicons name="add" size={24} color="#1E232D" />
             </TouchableOpacity>
           </View>
         </View>
@@ -216,14 +216,14 @@ export default function PlayScreen() {
               style={styles.counterBtnSmall}
               onPress={() => hole.putts > 0 && updateScore("putts", hole.putts - 1)}
             >
-              <Ionicons name="remove" size={20} color="#1B5E20" />
+              <Ionicons name="remove" size={20} color="#1E232D" />
             </TouchableOpacity>
             <Text style={styles.puttsValue}>{hole.putts}</Text>
             <TouchableOpacity
               style={styles.counterBtnSmall}
               onPress={() => updateScore("putts", hole.putts + 1)}
             >
-              <Ionicons name="add" size={20} color="#1B5E20" />
+              <Ionicons name="add" size={20} color="#1E232D" />
             </TouchableOpacity>
           </View>
         </View>
@@ -245,7 +245,7 @@ export default function PlayScreen() {
                   <Ionicons
                     name={val ? "checkmark-circle" : "close-circle"}
                     size={20}
-                    color={hole.fairway === val ? "#fff" : "#666"}
+                    color={hole.fairway === val ? (val ? "#1E232D" : "#fff") : "#666"}
                   />
                   <Text style={[styles.toggleText, hole.fairway === val && styles.toggleTextActive]}>
                     {val ? "Oui" : "Non"}
@@ -272,7 +272,7 @@ export default function PlayScreen() {
                 <Ionicons
                   name={val ? "checkmark-circle" : "close-circle"}
                   size={20}
-                  color={hole.gir === val ? "#fff" : "#666"}
+                  color={hole.gir === val ? (val ? "#1E232D" : "#fff") : "#666"}
                 />
                 <Text style={[styles.toggleText, hole.gir === val && styles.toggleTextActive]}>
                   {val ? "Oui" : "Non"}
@@ -289,7 +289,7 @@ export default function PlayScreen() {
           onPress={() => currentHole > 0 && setCurrentHole(currentHole - 1)}
           disabled={currentHole === 0}
         >
-          <Ionicons name="arrow-back" size={20} color={currentHole === 0 ? "#ccc" : "#1B5E20"} />
+          <Ionicons name="arrow-back" size={20} color={currentHole === 0 ? "#ccc" : "#1E232D"} />
           <Text style={[styles.navBtnText, currentHole === 0 && { color: "#ccc" }]}>Précédent</Text>
         </TouchableOpacity>
 
@@ -303,7 +303,7 @@ export default function PlayScreen() {
         {currentHole < scores.length - 1 ? (
           <TouchableOpacity style={styles.navBtn} onPress={() => setCurrentHole(currentHole + 1)}>
             <Text style={styles.navBtnText}>Suivant</Text>
-            <Ionicons name="arrow-forward" size={20} color="#1B5E20" />
+            <Ionicons name="arrow-forward" size={20} color="#1E232D" />
           </TouchableOpacity>
         ) : (
           <TouchableOpacity style={styles.finishBtn} onPress={submitRound} disabled={submitting}>
@@ -318,7 +318,7 @@ export default function PlayScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#F5F5F5" },
   loader: { flex: 1, justifyContent: "center", alignItems: "center" },
-  stepTitle: { fontSize: 22, fontWeight: "bold", color: "#333", margin: 16 },
+  stepTitle: { fontSize: 22, fontWeight: "bold", color: "#1E232D", margin: 16 },
   courseItem: {
     backgroundColor: "#fff",
     marginHorizontal: 16,
@@ -329,58 +329,58 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  courseItemName: { fontSize: 16, fontWeight: "bold", color: "#333" },
+  courseItemName: { fontSize: 16, fontWeight: "bold", color: "#1E232D" },
   courseItemCity: { fontSize: 13, color: "#999", marginTop: 2 },
-  courseItemPar: { fontSize: 16, fontWeight: "bold", color: "#1B5E20" },
+  courseItemPar: { fontSize: 16, fontWeight: "bold", color: "#82FFB4" },
   holeTabs: { backgroundColor: "#fff", paddingVertical: 8, paddingHorizontal: 8, maxHeight: 56 },
   holeTab: {
     width: 40, height: 40, borderRadius: 20,
     justifyContent: "center", alignItems: "center",
     marginHorizontal: 2, backgroundColor: "#F0F0F0",
   },
-  holeTabActive: { backgroundColor: "#1B5E20" },
+  holeTabActive: { backgroundColor: "#1E232D" },
   holeTabText: { fontSize: 14, fontWeight: "bold", color: "#666" },
-  holeTabTextActive: { color: "#fff" },
+  holeTabTextActive: { color: "#82FFB4" },
   scoreEntry: { flex: 1, padding: 16 },
   holeInfo: { flexDirection: "row", alignItems: "baseline", gap: 12, marginBottom: 24 },
-  holeTitle: { fontSize: 28, fontWeight: "bold", color: "#333" },
-  holePar: { fontSize: 18, color: "#1B5E20", fontWeight: "600" },
+  holeTitle: { fontSize: 28, fontWeight: "bold", color: "#1E232D" },
+  holePar: { fontSize: 18, color: "#82FFB4", fontWeight: "600" },
   holeDistance: { fontSize: 16, color: "#999" },
   scoreSection: { marginBottom: 24 },
   scoreLabel: { fontSize: 16, fontWeight: "600", color: "#666", marginBottom: 12 },
   counter: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 16 },
   counterBtn: {
     width: 48, height: 48, borderRadius: 24,
-    backgroundColor: "#1B5E20", justifyContent: "center", alignItems: "center",
+    backgroundColor: "#82FFB4", justifyContent: "center", alignItems: "center",
   },
   counterBtnSmall: {
     width: 40, height: 40, borderRadius: 20,
-    borderWidth: 2, borderColor: "#1B5E20", justifyContent: "center", alignItems: "center",
+    borderWidth: 2, borderColor: "#1E232D", justifyContent: "center", alignItems: "center",
   },
   scoreDisplay: { width: 100, height: 80, borderRadius: 16, justifyContent: "center", alignItems: "center" },
   scoreValue: { fontSize: 36, fontWeight: "bold" },
   scoreTag: { fontSize: 12, fontWeight: "600" },
-  puttsValue: { fontSize: 28, fontWeight: "bold", color: "#333", minWidth: 50, textAlign: "center" },
+  puttsValue: { fontSize: 28, fontWeight: "bold", color: "#1E232D", minWidth: 50, textAlign: "center" },
   toggleSection: { marginBottom: 20 },
   toggleRow: { flexDirection: "row", gap: 12 },
   toggleBtn: {
     flex: 1, flexDirection: "row", alignItems: "center", justifyContent: "center",
     gap: 6, padding: 12, borderRadius: 10, backgroundColor: "#F0F0F0",
   },
-  toggleActive: { backgroundColor: "#2ECC71" },
+  toggleActive: { backgroundColor: "#82FFB4" },
   toggleInactive: { backgroundColor: "#E74C3C" },
   toggleText: { fontWeight: "600", color: "#666" },
-  toggleTextActive: { color: "#fff" },
+  toggleTextActive: { color: "#1E232D" },
   navRow: {
     flexDirection: "row", justifyContent: "space-between", alignItems: "center",
     padding: 16, backgroundColor: "#fff", borderTopWidth: 1, borderTopColor: "#E0E0E0",
   },
   navBtn: { flexDirection: "row", alignItems: "center", gap: 4 },
   navBtnDisabled: { opacity: 0.4 },
-  navBtnText: { fontSize: 16, color: "#1B5E20", fontWeight: "600" },
+  navBtnText: { fontSize: 16, color: "#1E232D", fontWeight: "600" },
   navScore: { alignItems: "center" },
-  navScoreText: { fontSize: 16, fontWeight: "bold", color: "#333" },
+  navScoreText: { fontSize: 16, fontWeight: "bold", color: "#1E232D" },
   navParText: { fontSize: 14, color: "#E74C3C", fontWeight: "600" },
-  finishBtn: { backgroundColor: "#1B5E20", borderRadius: 10, paddingHorizontal: 20, paddingVertical: 10 },
-  finishBtnText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
+  finishBtn: { backgroundColor: "#82FFB4", borderRadius: 10, paddingHorizontal: 20, paddingVertical: 10 },
+  finishBtnText: { color: "#1E232D", fontSize: 16, fontWeight: "bold" },
 });

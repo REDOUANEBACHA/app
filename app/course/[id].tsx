@@ -36,7 +36,7 @@ export default function CourseDetailScreen() {
   if (loading || !course) {
     return (
       <View style={styles.loader}>
-        <ActivityIndicator size="large" color="#1B5E20" />
+        <ActivityIndicator size="large" color="#82FFB4" />
       </View>
     );
   }
@@ -88,7 +88,7 @@ export default function CourseDetailScreen() {
           style={styles.playButton}
           onPress={() => router.push(`/round/new?courseId=${course.id}`)}
         >
-          <Ionicons name="golf" size={22} color="#fff" />
+          <Ionicons name="golf" size={22} color="#1E232D" />
           <Text style={styles.playButtonText}>Jouer ce parcours</Text>
         </TouchableOpacity>
 
@@ -105,29 +105,29 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff", margin: 16, borderRadius: 16, padding: 20,
     elevation: 2, shadowColor: "#000", shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
   },
-  courseName: { fontSize: 24, fontWeight: "bold", color: "#333" },
+  courseName: { fontSize: 24, fontWeight: "bold", color: "#1E232D" },
   courseLocation: { fontSize: 14, color: "#999", marginTop: 4 },
   infoRow: { flexDirection: "row", gap: 12, marginTop: 16 },
-  infoBadge: { flex: 1, backgroundColor: "#E8F5E9", borderRadius: 10, padding: 12, alignItems: "center" },
-  infoBadgeValue: { fontSize: 20, fontWeight: "bold", color: "#1B5E20" },
-  infoBadgeLabel: { fontSize: 12, color: "#666", marginTop: 2 },
+  infoBadge: { flex: 1, backgroundColor: "#1E232D", borderRadius: 10, padding: 12, alignItems: "center" },
+  infoBadgeValue: { fontSize: 20, fontWeight: "bold", color: "#82FFB4" },
+  infoBadgeLabel: { fontSize: 12, color: "#aaa", marginTop: 2 },
   holesCard: {
     backgroundColor: "#fff", marginHorizontal: 16, borderRadius: 16, padding: 20,
     elevation: 2, shadowColor: "#000", shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
   },
-  sectionTitle: { fontSize: 18, fontWeight: "bold", color: "#333", marginBottom: 12 },
+  sectionTitle: { fontSize: 18, fontWeight: "bold", color: "#1E232D", marginBottom: 12 },
   tableHeader: {
     flexDirection: "row", borderBottomWidth: 1, borderBottomColor: "#E0E0E0", paddingBottom: 8, marginBottom: 4,
   },
   tableHeaderText: { fontWeight: "bold", color: "#666", fontSize: 13 },
   tableRow: { flexDirection: "row", paddingVertical: 8, borderBottomWidth: 0.5, borderBottomColor: "#F0F0F0" },
   tableCell: { flex: 1, textAlign: "center" },
-  holeNumber: { fontWeight: "bold", color: "#1B5E20" },
+  holeNumber: { fontWeight: "bold", color: "#1E232D" },
   holePar: { color: "#333", fontWeight: "600" },
   holeDistance: { color: "#666" },
   playButton: {
-    backgroundColor: "#1B5E20", margin: 16, borderRadius: 12, padding: 16,
+    backgroundColor: "#82FFB4", margin: 16, borderRadius: 12, padding: 16,
     flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 8,
   },
-  playButtonText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+  playButtonText: { color: "#1E232D", fontSize: 18, fontWeight: "bold" },
 });

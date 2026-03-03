@@ -32,7 +32,7 @@ export default function MapScreen() {
   if (loading) {
     return (
       <View style={styles.loader}>
-        <ActivityIndicator size="large" color="#1B5E20" />
+        <ActivityIndicator size="large" color="#82FFB4" />
       </View>
     );
   }
@@ -52,7 +52,7 @@ export default function MapScreen() {
             onSelected={() => setSelectedCourse(course)}
           >
             <View style={styles.marker}>
-              <Ionicons name="golf" size={20} color="#fff" />
+              <Ionicons name="golf" size={20} color="#1E232D" />
             </View>
           </MapboxGL.PointAnnotation>
         ))}
@@ -91,7 +91,7 @@ export default function MapScreen() {
                 router.push(`/round/new?courseId=${selectedCourse.id}`);
               }}
             >
-              <Ionicons name="golf" size={18} color="#fff" />
+              <Ionicons name="golf" size={18} color="#1E232D" />
               <Text style={styles.playBtnText}>Jouer</Text>
             </TouchableOpacity>
           </View>
@@ -106,14 +106,14 @@ const styles = StyleSheet.create({
   map: { flex: 1 },
   loader: { flex: 1, justifyContent: "center", alignItems: "center" },
   marker: {
-    backgroundColor: "#1B5E20",
+    backgroundColor: "#82FFB4",
     borderRadius: 20,
     width: 36,
     height: 36,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 2,
-    borderColor: "#fff",
+    borderColor: "#1E232D",
   },
   popup: {
     position: "absolute",
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
   },
   popupClose: { position: "absolute", top: 12, right: 12 },
-  popupName: { fontSize: 20, fontWeight: "bold", color: "#333", marginBottom: 4 },
+  popupName: { fontSize: 20, fontWeight: "bold", color: "#1E232D", marginBottom: 4 },
   popupCity: { fontSize: 14, color: "#999" },
   popupInfo: { flexDirection: "row", gap: 16, marginTop: 12 },
   popupDetail: { fontSize: 14, color: "#666", fontWeight: "600" },
@@ -138,15 +138,15 @@ const styles = StyleSheet.create({
   detailButton: {
     flex: 1,
     borderWidth: 1,
-    borderColor: "#1B5E20",
+    borderColor: "#1E232D",
     borderRadius: 10,
     padding: 12,
     alignItems: "center",
   },
-  detailButtonText: { color: "#1B5E20", fontWeight: "bold" },
+  detailButtonText: { color: "#1E232D", fontWeight: "bold" },
   playBtn: {
     flex: 1,
-    backgroundColor: "#1B5E20",
+    backgroundColor: "#82FFB4",
     borderRadius: 10,
     padding: 12,
     flexDirection: "row",
@@ -154,5 +154,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 6,
   },
-  playBtnText: { color: "#fff", fontWeight: "bold" },
+  playBtnText: { color: "#1E232D", fontWeight: "bold" },
 });

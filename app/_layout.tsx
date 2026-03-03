@@ -3,8 +3,10 @@ import { ActivityIndicator, View } from "react-native";
 import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useAuthStore } from "../src/store/useAuthStore";
+import { setupNotifications } from "../src/services/notifications";
 
-const THEME_GREEN = "#1B5E20";
+const DARK = "#1E232D";
+const ACCENT = "#82FFB4";
 
 export default function RootLayout() {
   const { user, loading, loadUser } = useAuthStore();
@@ -16,10 +18,14 @@ export default function RootLayout() {
   }, []);
 
   useEffect(() => {
+    if (!user) return;
+    const cleanup = setupNotifications(user.id, router);
+    return cleanup;
+  }, [user]);
+
+  useEffect(() => {
     if (loading) return;
-
     const inAuthGroup = segments[0] === "login";
-
     if (!user && !inAuthGroup) {
       router.replace("/login");
     } else if (user && inAuthGroup) {
@@ -29,8 +35,8 @@ export default function RootLayout() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: THEME_GREEN }}>
-        <ActivityIndicator size="large" color="#fff" />
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: DARK }}>
+        <ActivityIndicator size="large" color={ACCENT} />
       </View>
     );
   }
@@ -40,7 +46,7 @@ export default function RootLayout() {
       <StatusBar style="light" />
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: THEME_GREEN },
+          headerStyle: { backgroundColor: DARK },
           headerTintColor: "#fff",
           headerTitleStyle: { fontWeight: "bold" },
         }}
