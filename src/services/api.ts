@@ -24,7 +24,7 @@ export const getUser = (id: string) =>
 export const getUserByEmail = (email: string) =>
   request<User>(`/users/email/${email}`);
 
-export const updateUser = (id: string, data: Partial<Pick<User, "name" | "handicap">>) =>
+export const updateUser = (id: string, data: Partial<Pick<User, "name" | "handicap" | "pushToken">>) =>
   request<User>(`/users/${id}`, { method: "PATCH", body: JSON.stringify(data) });
 
 // Courses

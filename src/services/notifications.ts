@@ -77,7 +77,7 @@ export function setupNotifications(userId: string, router: any): () => void {
 
   registerForPushNotifications().then((token) => {
     if (token) {
-      updateUser(userId, { pushToken: token } as any).catch(() => {});
+      updateUser(userId, { pushToken: token }).catch(() => {});
     }
   });
 
