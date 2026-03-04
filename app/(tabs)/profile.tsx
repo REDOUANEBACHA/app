@@ -29,12 +29,31 @@ export default function ProfileScreen() {
     (async () => {
       try {
         const Notifications = require("expo-notifications");
+        const Device = require("expo-device");
         const Constants = require("expo-constants").default;
+
+        if (!Device.isDevice) {
+          setPushToken("Erreur: pas un appareil physique");
+          return;
+        }
+
+        const { status: existingStatus } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== "granted") {
+          const { status } = await Notifications.requestPermissionsAsync();
+          finalStatus = status;
+        }
+        if (finalStatus !== "granted") {
+          setPushToken(`Erreur: permission refusée (${finalStatus})`);
+          return;
+        }
+
         const projectId = Constants.expoConfig?.extra?.eas?.projectId;
+        setPushToken(`ProjectId: ${projectId ?? "null"} - Chargement...`);
         const tokenData = await Notifications.getExpoPushTokenAsync({ projectId });
         setPushToken(tokenData.data);
-      } catch {
-        setPushToken("Non disponible");
+      } catch (err: any) {
+        setPushToken(`Erreur: ${err.message}`);
       }
     })();
   }, []);
