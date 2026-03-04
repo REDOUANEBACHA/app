@@ -76,10 +76,15 @@ export function setupNotifications(userId: string, router: any): () => void {
   const NotifModule = Notifications;
 
   registerForPushNotifications().then((token) => {
+    console.log("Push token:", token);
     if (token) {
-      updateUser(userId, { pushToken: token }).catch(() => {});
+      updateUser(userId, { pushToken: token })
+        .then(() => console.log("Push token saved to DB"))
+        .catch((err) => console.error("Failed to save push token:", err));
+    } else {
+      console.log("No push token received (permission denied or not a device)");
     }
-  });
+  }).catch((err) => console.error("registerForPushNotifications error:", err));
 
   schedulePracticeReminder();
 

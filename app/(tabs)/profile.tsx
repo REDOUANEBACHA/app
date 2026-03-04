@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   Alert,
   ScrollView,
   Dimensions,
+  Clipboard,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { LineChart } from "react-native-chart-kit";
@@ -18,10 +19,25 @@ const screenWidth = Dimensions.get("window").width;
 export default function ProfileScreen() {
   const { user, logout } = useAuthStore();
   const { stats, fetchStats } = useRoundStore();
+  const [pushToken, setPushToken] = useState<string | null>(null);
 
   useEffect(() => {
     if (user) fetchStats(user.id);
   }, [user]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const Notifications = require("expo-notifications");
+        const Constants = require("expo-constants").default;
+        const projectId = Constants.expoConfig?.extra?.eas?.projectId;
+        const tokenData = await Notifications.getExpoPushTokenAsync({ projectId });
+        setPushToken(tokenData.data);
+      } catch {
+        setPushToken("Non disponible");
+      }
+    })();
+  }, []);
 
   const handleLogout = () => {
     Alert.alert("Déconnexion", "Êtes-vous sûr de vouloir vous déconnecter ?", [
@@ -82,6 +98,19 @@ export default function ProfileScreen() {
         </View>
       )}
 
+      {pushToken && (
+        <TouchableOpacity
+          style={styles.tokenCard}
+          onPress={() => {
+            Clipboard.setString(pushToken);
+            Alert.alert("Copié", "Push token copié dans le presse-papier");
+          }}
+        >
+          <Text style={styles.tokenLabel}>Push Token (tap pour copier)</Text>
+          <Text style={styles.tokenValue} numberOfLines={2}>{pushToken}</Text>
+        </TouchableOpacity>
+      )}
+
       <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Ionicons name="log-out-outline" size={20} color="#E74C3C" />
         <Text style={styles.logoutText}>Se déconnecter</Text>
@@ -137,4 +166,9 @@ const styles = StyleSheet.create({
     margin: 16, padding: 16, backgroundColor: "#fff", borderRadius: 12, borderWidth: 1, borderColor: "#FFCDD2",
   },
   logoutText: { fontSize: 16, fontWeight: "600", color: "#E74C3C" },
+  tokenCard: {
+    backgroundColor: "#1E232D", marginHorizontal: 16, marginBottom: 8, borderRadius: 12, padding: 16,
+  },
+  tokenLabel: { fontSize: 12, color: "#aaa", marginBottom: 4 },
+  tokenValue: { fontSize: 11, color: "#82FFB4", fontFamily: "monospace" },
 });
